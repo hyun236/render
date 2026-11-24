@@ -176,7 +176,7 @@ def health():
 def analyze_youtube(req: YouTubeReq):
     with tempfile.TemporaryDirectory() as tmp:
         cmd = [
-            "yt-dlp", "--no-playlist", "-x", "--audio-format", "wav",
+            "yt-dlp", "--no-playlist", "--remote-components", "ejs:github", "-x", "--audio-format", "wav",
             "--postprocessor-args", "ffmpeg:-ac 1 -ar 22050 -t 90",
             "-o", os.path.join(tmp, "raw.%(ext)s"),
         ]
